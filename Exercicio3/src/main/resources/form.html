@@ -1,0 +1,167 @@
+<html lang="pt-br">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Controle de Carros</title>
+
+  <script type="text/javascript">
+	function addIdToPath(form_name, base_url) {
+	  var your_form = document.getElementById(form_name);
+	  var id = your_form.elements.namedItem("id").value;
+	  your_form.action = base_url + id;
+	}
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Controle de Carros</h1>
+    <img src="https://i.imgur.com/bECNsg0.png" alt="Carro Esportivo" class="car-img">
+    
+    <section class="secao">
+      <h2>Inserir Carro</h2>
+      <form action="http://localhost:6789/carro" method="post" id="form-add">
+        <input type="text" name="codigo" placeholder="Código do carro">
+        <input type="text" name="marca" placeholder="Marca">
+        <input type="text" name="modelo" placeholder="Modelo">
+        <input type="text" name="ano" placeholder="Ano">
+        <input type="text" name="placa" placeholder="Placa">
+        <input type="text" name="preco" placeholder="Preço">
+        <input type="submit" value="Cadastrar">
+      </form>
+    </section>
+	
+	<section class="secao">
+	  <h2>Atualizar Carro</h2>
+	  <form onsubmit="addIdToPath('form-update', 'http://localhost:6789/carro/update/')" method="post" id="form-update">
+	    <input type="text" id="id" name="id" placeholder="Código do carro...">
+	    <input type="text" name="marca" placeholder="Nova Marca">
+	    <input type="text" name="modelo" placeholder="Novo Modelo">
+	    <input type="text" name="ano" placeholder="Novo Ano">
+	    <input type="text" name="placa" placeholder="Nova Placa">
+	    <input type="text" name="preco" placeholder="Novo Preço">
+	    <input type="submit" value="Atualizar">
+	  </form>
+	</section>
+	
+	<section class="secao">
+	  <h2>Remover Carro</h2>
+	  <form onsubmit="addIdToPath('form-delete', 'http://localhost:6789/carro/delete/')" method="get" id="form-delete">
+	    <input type="text" id="id" placeholder="Código do carro...">
+	    <input type="submit" value="Remover" class="input--remove__style">
+	  </form>
+	</section>
+
+	<section class="secao">
+	  <h2>Visualizar Carro</h2>
+	  <form onsubmit="addIdToPath('form-get', 'http://localhost:6789/carro/')" method="get" id="form-get">
+	    <input type="text" id="id" placeholder="Código do carro...">
+	    <input type="submit" value="Consultar">
+	  </form>
+	</section>
+	
+    <section class="secao">
+      <h2>Listar Carros</h2>
+      <form action="http://localhost:6789/carro" method="get" id="form-all">
+        <input type="submit" value="Ver Todos os Carros">
+      </form>
+    </section>
+  </div>
+</body>
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1C1C1C;
+    color: #F5F5F5;
+  }
+
+  h1 {
+    text-align: center;
+    color: #E53935;
+    font-size: 3em;
+    font-weight: bold;
+    margin-bottom: 0;
+  }
+
+  .container {
+    width: 90%;
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 30px;
+    background-color: #2E2E2E;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+  }
+
+  .car-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 20px 0;
+    border-radius: 10px;
+  }
+
+  .secao {
+    margin-bottom: 30px;
+  }
+
+  .secao h2 {
+    color: #F5F5F5;
+    font-size: 1.8em;
+    border-bottom: 2px solid #E53935;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+
+  input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #444;
+    border-radius: 8px;
+    background-color: #333;
+    color: #F5F5F5;
+  }
+
+  input[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    background-color: #E53935;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #D32F2F;
+  }
+
+  .input--remove__style {
+    background-color: #B71C1C;
+  }
+
+  .input--remove__style:hover {
+    background-color: #D32F2F;
+  }
+
+  input[type="text"]:focus {
+    outline: none;
+    border-color: #E53935;
+  }
+
+  form {
+    margin-bottom: 20px;
+  }
+</style>
+
+</html>
